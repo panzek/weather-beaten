@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navigation from './components/Navbar.js';
+import Weather from './components/Weather.js'
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
     <Navigation />
       <header className="App-header">
         <p>
-          Weather Beaten App.
+          <Weather />
         </p>
       </header>
     </div>
