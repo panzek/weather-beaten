@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar.js';
+import Navigation from './components/Navbar.js';
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+    <Navigation />
       <header className="App-header">
         <p>
           Weather Beaten App.
