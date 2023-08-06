@@ -7,11 +7,20 @@ const App = () => {
   return (
     <div>
     <Navigation />
-      <header className="App-header">
-        <p>
-          <Weather />
-        </p>
-      </header>
+      <div classNmae="row ">
+        <div className="col display">
+          <header className="App-header">
+          <p>
+            <Weather />
+          </p>
+          </header>
+        </div>
+        <div className="col socials"> 
+          <span>
+            Social Network
+          </span>
+        </div>
+      </div>
     </div>
   )
 }
