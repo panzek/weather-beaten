@@ -1,14 +1,17 @@
 import React from 'react';
+import { useState } from 'react'
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Weather = () => {
 
+  const [weather, setWeather] = useState("")
+
   const handleClick = () => {
-    console.log("Search Weather")
+    console.logsetWeather(weather);
   }
-  
+
   return (
     <>
       <Row>
