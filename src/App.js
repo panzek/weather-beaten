@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navigation from './components/Navbar.js';
-import Weather from './components/Weather.js'
+import Weather from './components/Weather'
 
 const App = () => {
   return (
