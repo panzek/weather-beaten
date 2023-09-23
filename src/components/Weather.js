@@ -4,18 +4,25 @@ import { useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+const reset = () =>{
+  window.location.reload()
+}
+
 const Weather = () => {
 
   const [weather, setWeather] = useState("")
 
   const handleClick = () => {
-    console.logsetWeather(weather);
+    console.log(setWeather(weather));
   }
 
   return (
     <>
       <Row>
         <h3>Weather Beaten App</h3>
+      </Row>
+      <Row>
+        <button onClick={reset}>Reset</button>
       </Row>
       <Row>
       <Col><input placeholder="Enter City..." /><button onClick={handleClick}>Submit</button></Col>
