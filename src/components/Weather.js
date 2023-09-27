@@ -4,6 +4,12 @@ import { useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+//Create a new Date object
+const today = new Date();
+const currentDate = today.toLocaleDateString();
+const currentTime = today.toLocaleTimeString();
+
+
 const reset = () =>{
   window.location.reload()
 }
@@ -29,6 +35,9 @@ const Weather = () => {
       </Row>
       <Row>
         <Col>City Name</Col>
+      </Row>
+      <Row>
+        Date: {currentDate} Time: {currentTime}
       </Row>
       <Row>
         <Col sm={6}>Temp: 1oC</Col>
