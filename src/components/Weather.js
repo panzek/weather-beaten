@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,12 +13,29 @@ const reset = () =>{
   window.location.reload()
 }
 
+const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
+
 const Weather = () => {
 
-  const [weather, setWeather] = useState("")
+  const [weather, setWeather] = useState("");
+  const [city, setCity] = useState("");
+
+  useEffect(() => {
+    const getWeather = async () => {
+      const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
+      const data = await response.json();
+      console.log(data);
+      setWeather(data);
+    }
+    getWeather();
+  }, [city]);
+
+  const handleChange = (e) => {
+    setCity(e.target.value);
+  }
 
   const handleClick = () => {
-    console.log(setWeather(weather));
+    setWeather(weather);
   }
 
   return (
@@ -31,10 +47,10 @@ const Weather = () => {
         <button onClick={reset}>Reset</button>
       </Row>
       <Row>
-      <Col><input placeholder="Enter City..." /><button onClick={handleClick}>Submit</button></Col>
+      <Col><input value={city} onChange={handleChange} placeholder="Enter City..." /><button onClick={handleClick}>Submit</button></Col>
       </Row>
       <Row>
-        <Col>City Name</Col>
+        <Col>{city}</Col>
       </Row>
       <Row>
         Date: {currentDate} Time: {currentTime}
