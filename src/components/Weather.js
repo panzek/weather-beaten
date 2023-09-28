@@ -47,7 +47,7 @@ const Weather = () => {
         <button onClick={reset}>Reset</button>
       </Row>
       <Row>
-      <Col><input value={city} onChange={handleChange} placeholder="Enter City..." /><button onClick={handleClick}>Submit</button></Col>
+      <Col><input value={city} onChange={handleChange} placeholder="Enter City..." /><button onClick={handleClick}>Search</button></Col>
       </Row>
       <Row>
         <Col>{city}</Col>
