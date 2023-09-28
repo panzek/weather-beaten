@@ -17,7 +17,7 @@ const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
 
 const Weather = () => {
 
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState({});
   const [city, setCity] = useState("");
 
   useEffect(() => {
