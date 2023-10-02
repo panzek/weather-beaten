@@ -42,6 +42,17 @@ const Weather = () => {
     setWeather(weather);
   }
 
+  //Dynamically display weather icons based on condition code
+  const getWeatherIcon = () => {
+    if(!weather) return null;
+
+    const icon = weather.weather[0].icon;
+    console.log(icon)
+    const getIconUrl = `https://openweathermap.org/img/wn/${icon.replace('n','d')}@2x.png`;
+
+    return <img src={getIconUrl} width="250" height="250" alt="Weather Icon"></img>
+  }
+
   return (
     <>
       <Row>
@@ -56,22 +67,22 @@ const Weather = () => {
       {(typeof weather.main !== "undefined") ? (
         <Row>
           <Row>
-            <Col>{weather.name}</Col>
+            <Col>{weather.main.name}</Col>
           </Row>
           <Row>
            <Col>{currentDate} {currentTime}</Col>
           </Row>
           <Row>
-            <Col>Icon: {weather.weather.icon} </Col>
-            <Col>Timezone: {weather.timezone} </Col>
+            <Col>{getWeatherIcon()} </Col>
+          </Row>
+          <Row>
+            <Col>{weather.weather[0].description} </Col>
           </Row>
           <Row>
           <Col sm={6}>Humidity: {weather.main.humidity}%</Col>
-          <Col sm={6}>Temperature: {Math.floor(weather?.main?.temp)}&deg;</Col>
+          <Col sm={6}>Temperature: {Math.floor(weather.main.temp)}&deg;</Col>
           </Row>
           <Row>
-            <Col sm={6}>Description: {weather.weather[0].description} </Col>
-            <Col sm={6}>Description: {weather.weather[0].icon} </Col>
             <Col sm={6}>Wind speed: {weather.wind.speed}km/hr </Col>
           </Row>
         </Row>
