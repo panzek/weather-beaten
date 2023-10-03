@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -24,15 +24,26 @@ const Weather = () => {
 
   const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
 
+  // useEffect(() => {
+  //   const getWeather = async () => {
+  //     const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setWeather(data);
+  //   }
+  //   getWeather();
+  // }, [REACT_APP_API_URL, REACT_APP_API_KEY, city]);
+
+  const getWeather = useCallback(async () => {
+    const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
+    const data = await response.json();
+    console.log(data);
+    setWeather(data);
+  }, [REACT_APP_API_URL, city, REACT_APP_API_KEY]);
+
   useEffect(() => {
-    const getWeather = async () => {
-      const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
-      const data = await response.json();
-      console.log(data);
-      setWeather(data);
-    }
     getWeather();
-  }, [REACT_APP_API_URL, REACT_APP_API_KEY, city]);
+  }, [getWeather]);
 
   const handleChange = (e) => {
     setCity(e.target.value);
@@ -40,6 +51,7 @@ const Weather = () => {
 
   const handleClick = () => {
     setWeather(weather);
+    getWeather();
   }
 
   //Dynamically display weather icons based on condition code
@@ -67,7 +79,7 @@ const Weather = () => {
       {(typeof weather.main !== "undefined") ? (
         <Row>
           <Row>
-            <Col>{weather.main.name}</Col>
+            <Col>{weather.name}</Col>
           </Row>
           <Row>
            <Col>{currentDate} {currentTime}</Col>
