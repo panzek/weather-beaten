@@ -74,7 +74,7 @@ const Weather = () => {
         <Col><input value={city} onChange={handleChange} placeholder="Enter City..." /><button onClick={refresh}>Refresh</button></Col>
       </Row>
       <Row>
-        <Col><button onClick={handleClick}>Search</button></Col>
+        <Col><button onClick={handleClick}>Check Weather</button></Col>
       </Row>
       {(typeof weather.main !== "undefined") ? (
         <Row>
