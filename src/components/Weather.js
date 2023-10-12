@@ -20,14 +20,19 @@ const Weather = () => {
 
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("");
+  const [error, setError] = useState(null);
 
   const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
 
   //1. Fetching data from weather API Without using useEffect 
   const getWeather = async () => {
-    const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
-    const data = await response.json();
-    setWeather(data);
+    try {
+      const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
+      const data = await response.json();
+      setWeather(data);
+    } catch (err) {
+      console.error(setError(error.message));
+    }
   };
 
   //2. a. Fetching data from weather API using useEffect without useCallback function
@@ -98,6 +103,7 @@ const Weather = () => {
         <Row>
           <Row>
             <Col>{weather.name}</Col>
+            <Col>{error.message}</Col>
           </Row>
           <Row>
            <Col>{currentDate} {currentTime}</Col>
