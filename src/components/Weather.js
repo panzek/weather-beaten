@@ -20,7 +20,7 @@ const Weather = () => {
 
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
 
@@ -28,10 +28,14 @@ const Weather = () => {
   const getWeather = async () => {
     try {
       const response = await fetch(`${REACT_APP_API_URL}/weather?q=${city}&appid=${REACT_APP_API_KEY}&units=metric`)
+        if(!response.ok) {
+          throw Error('Unable to fetch weather data');
+        }
       const data = await response.json();
       setWeather(data);
-    } catch (err) {
-      console.error(setError(error.message));
+    } catch(err) {
+      console.error(err.message);
+      setError(err.message);
     }
   };
 
@@ -98,6 +102,9 @@ const Weather = () => {
       </Row>
       <Row>
         <Col><button onClick={handleClick}>Check Weather</button></Col>
+      </Row>
+      <Row>
+        <Col>{ error && <div>{error}</div> }</Col>
       </Row>
       {(typeof weather.main !== "undefined") ? (
         <Row>
