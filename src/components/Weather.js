@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
+
+import { DateTime, Settings } from 'luxon';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+//Setting default locale to Ireland
+Settings.defaultLocale = "en-IE";
+
 const Weather = () => {
 
-  //Create a new Date object
-  const today = new Date();
-   //Get current date
-  const currentDate = today.toLocaleDateString();
-  //Get current time
-  const currentTime = today.toLocaleTimeString();
+  // Create a new Date object
+  const today = DateTime.local();
+  // Format the date and time in 12-hour am/pm format
+  const currentTime = today.toLocaleString(
+    {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: "true",
+      weekend: "short",
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    }
+  );
 
   const refresh = () =>{
     window.location.reload()
@@ -92,7 +105,7 @@ const Weather = () => {
             <Col>{error.message}</Col>
           </Row>
           <Row>
-           <Col>{currentDate} {currentTime}</Col>
+           <Col> {currentTime}</Col>
           </Row>
           <Row>
             <Col>{getWeatherIcon()} </Col>
