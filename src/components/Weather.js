@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 
-import { DateTime, Settings } from 'luxon';
+import { DateTime } from 'luxon';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-//Setting default locale to Ireland
-Settings.defaultLocale = "en-IE";
 
 const Weather = () => {
 
@@ -18,7 +15,7 @@ const Weather = () => {
       hour: "numeric",
       minute: "2-digit",
       hour12: "true",
-      weekend: "short",
+      weekday: "short",
       month: "short",
       day: "2-digit",
       year: "numeric",
