@@ -31,7 +31,22 @@ const Weather = () => {
   const [status, setStatus] = useState("typing");
   const [error, setError] = useState(false);
 
-  const {REACT_APP_API_URL, REACT_APP_API_KEY} = process.env;
+  // Destructure environment variables into an object
+  const { 
+    REACT_APP_API_URL, 
+    REACT_APP_API_KEY, 
+    REACT_APP_TIMEZONE_API_URL, 
+    REACT_APP_TIMEZONE_API_KEY 
+  } = process.env;
+  
+  const timeZoneApiUrl = `${REACT_APP_TIMEZONE_API_URL}/timezone/json?location=39.6034810%2C-119.6822510&timestamp=1331161200&key=${REACT_APP_TIMEZONE_API_KEY}`;
+
+  //Fetch timezone data for searched city from Time zone API
+  const getSearchedCityTimeZone = async () => {
+      const res = await fetch(timeZoneApiUrl);
+      const timeData = await res.json();
+      console.log('Search city current time:', timeData)
+  }
 
   // Fetching data from weather API without using useEffect 
   const getWeather = async () => {
@@ -56,6 +71,7 @@ const Weather = () => {
     setWeather(weather);
     setStatus("submitting")
     getWeather();
+    getSearchedCityTimeZone();
   }
 
   //Dynamically display weather icons based on condition code
@@ -102,7 +118,7 @@ const Weather = () => {
             <Col>{error.message}</Col>
           </Row>
           <Row>
-           <Col> {currentTime}</Col>
+           <Col> {currentTime}  </Col>
           </Row>
           <Row>
             <Col>{getWeatherIcon()} </Col>
