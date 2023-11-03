@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import { DateTime } from 'luxon';
+import {Container, Row, Col, Button } from 'react-bootstrap';
 // import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
 const Weather = () => {
 
@@ -78,55 +79,57 @@ const Weather = () => {
 
   return (
     <>
-      <Row>
-        <h3>Weather Beaten</h3>
-      </Row>
-      <Row>
-        <Col>
-          <input 
-            type="text"
-            value={city} 
-            onChange={handleChange} 
-            disabled={status === "submitting"} 
-            placeholder="Enter City..." />
-          <button onClick={refresh}>Refresh</button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-        <button 
-          onClick={handleClick} 
-          disabled={city.length === 0 || status === "submitting"} >
-          Checking Weather
-        </button>
-        </Col>
-      </Row>
-      <Row>
-        <Col>{ error && <div>{error}</div> }</Col>
-      </Row>
-      {(typeof weather.main !== "undefined") ? (
+      <Container fluid>
         <Row>
-          <Row>
-            <Col>{time}</Col>
-          </Row>
-          <Row>
-            <Col>{weather.name}, {weather.sys.country}</Col>
-            <Col>{error.message}</Col>
-          </Row>
-          <Row>
-            <Col sm={6}>{getWeatherIcon()}</Col>
-            <Col sm={6}>{weather.weather[0].description}</Col>
-          </Row>
-          <Row>
-            <Col>{Math.floor(weather.main.temp)}&deg;C</Col>
-          </Row>
-          <Row>
-            <Col sm={6}>Wind speed: {weather.wind.speed}km/hr </Col>
-            <Col sm={6}>Humidity: {weather.main.humidity}%</Col>
-          </Row>
+          <h3>Weather Beaten</h3>
         </Row>
-      ) : <Row>Enter city and click search button</Row>
-      }
+        <Row>
+          <Col>
+            <input 
+              type="text"
+              value={city} 
+              onChange={handleChange} 
+              disabled={status === "submitting"} 
+              placeholder="Enter City..." />
+            <button onClick={refresh}>Refresh</button>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="d-grid mt-2">
+          <Button variant="primary" size="sm"
+            onClick={handleClick} 
+            disabled={city.length === 0 || status === "submitting"} >
+            Checking Weather
+          </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>{ error && <div>{error}</div> }</Col>
+        </Row>
+        {(typeof weather.main !== "undefined") ? (
+          <Row>
+            <Row>
+              <Col>{time}</Col>
+            </Row>
+            <Row>
+              <Col>{weather.name}, {weather.sys.country}</Col>
+              <Col>{error.message}</Col>
+            </Row>
+            <Row>
+              <Col >{getWeatherIcon()}</Col>
+              <Col >{weather.weather[0].description}</Col>
+            </Row>
+            <Row>
+              <Col>{Math.floor(weather.main.temp)}&deg;C</Col>
+            </Row>
+            <Row>
+              <Col xs={6}>{weather.wind.speed}km/hr </Col>
+              <Col xs={6}>{weather.main.humidity}%</Col>
+            </Row>
+          </Row>
+          ) : <Row>Enter city and click search button</Row>
+        }
+      </Container>
     </>
    
   )
