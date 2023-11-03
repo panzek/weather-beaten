@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 
 import { DateTime } from 'luxon';
-import {Row, Col, Card, Button } from 'react-bootstrap';
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import { Row, Col, Card, Button, Form } from 'react-bootstrap';
 
 const Weather = () => {
 
@@ -78,21 +75,25 @@ const Weather = () => {
   }
 
   return (
-    <Card className="text-center" style={{ width: '20rem' }}>
-      <Card.Header as="h4">Weather Beaten App</Card.Header>
+    <Card className="text-center shadow rounded" style={{ width: '20rem', height: '25rem' }}>
+      <Card.Header as="h4" className="text-muted mb-2">Weather Beaten App</Card.Header>
       <Card.Body>
         <Card.Text>
-        <input 
-            type="text"
-            value={city} 
-            onChange={handleChange} 
-            disabled={status === "submitting"} 
-            placeholder="Enter City..." />
-          <button onClick={refresh}>Refresh</button>
-          <Button className="mt-2" variant="primary" size="sm"
+        <Form.Control 
+          className="w-100 " 
+          size="sm"
+          type="text"
+          value={city} 
+          onChange={handleChange} 
+          disabled={status === "submitting"} 
+          placeholder="Enter City..." />
+          <Button className="mt-2" variant="secondary" size="sm"
             onClick={handleClick} 
             disabled={city.length === 0 || status === "submitting"} >
             Checking Weather
+          </Button>
+          <Button className="mt-2 ms-1" variant="outline-secondary" size="sm" onClick={refresh}>
+            Refresh
           </Button>
         </Card.Text>
         <Card.Text>{ error && <div>{error}</div> }</Card.Text>
@@ -113,8 +114,12 @@ const Weather = () => {
               <Col>{weather.weather[0].description}</Col>
             </Row>
             <Row>
-              <Col xs={6}>{weather.wind.speed}km/hr </Col>
-              <Col xs={6}>{weather.main.humidity}%</Col>
+              <Col 
+                className="ms-2" 
+                style={{ fontSize: '0.9rem' }}>
+                Wind Speed: {weather.wind.speed}km/hr. 
+                Humidity: {weather.main.humidity}%
+              </Col>
             </Row>
           </Row>
           ) : <Row>Enter city and click search button</Row>
