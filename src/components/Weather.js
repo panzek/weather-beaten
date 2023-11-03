@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { DateTime } from 'luxon';
-import {Container, Row, Col, Button } from 'react-bootstrap';
+import {Row, Col, Card, Button } from 'react-bootstrap';
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
@@ -78,49 +78,39 @@ const Weather = () => {
   }
 
   return (
-    <>
-      <Container fluid>
-        <Row>
-          <h3>Weather Beaten</h3>
-        </Row>
-        <Row>
-          <Col>
-            <input 
-              type="text"
-              value={city} 
-              onChange={handleChange} 
-              disabled={status === "submitting"} 
-              placeholder="Enter City..." />
-            <button onClick={refresh}>Refresh</button>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="d-grid mt-2">
-          <Button variant="primary" size="sm"
+    <Card className="text-center" style={{ width: '20rem' }}>
+      <Card.Header as="h4">Weather Beaten App</Card.Header>
+      <Card.Body>
+        <Card.Text>
+        <input 
+            type="text"
+            value={city} 
+            onChange={handleChange} 
+            disabled={status === "submitting"} 
+            placeholder="Enter City..." />
+          <button onClick={refresh}>Refresh</button>
+          <Button className="mt-2" variant="primary" size="sm"
             onClick={handleClick} 
             disabled={city.length === 0 || status === "submitting"} >
             Checking Weather
           </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{ error && <div>{error}</div> }</Col>
-        </Row>
+        </Card.Text>
+        <Card.Text>{ error && <div>{error}</div> }</Card.Text>
+        <Card.Text>
         {(typeof weather.main !== "undefined") ? (
           <Row>
             <Row>
               <Col>{time}</Col>
             </Row>
             <Row>
-              <Col>{weather.name}, {weather.sys.country}</Col>
-              <Col>{error.message}</Col>
+              <Col as="h4">{weather.name}, {weather.sys.country}</Col>
+            </Row>
+            <Row> <Col>{error.message}</Col></Row>
+            <Row className="mt-2">
+              <Col as="h1">{getWeatherIcon()} {Math.floor(weather.main.temp)}&deg;C</Col> 
             </Row>
             <Row>
-              <Col >{getWeatherIcon()}</Col>
-              <Col >{weather.weather[0].description}</Col>
-            </Row>
-            <Row>
-              <Col>{Math.floor(weather.main.temp)}&deg;C</Col>
+              <Col>{weather.weather[0].description}</Col>
             </Row>
             <Row>
               <Col xs={6}>{weather.wind.speed}km/hr </Col>
@@ -129,10 +119,10 @@ const Weather = () => {
           </Row>
           ) : <Row>Enter city and click search button</Row>
         }
-      </Container>
-    </>
-   
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
-}
+};
 
 export default Weather
