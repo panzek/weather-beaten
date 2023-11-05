@@ -87,10 +87,10 @@ const Weather = () => {
           onChange={handleChange} 
           disabled={status === "submitting"} 
           placeholder="Enter City..." />
-          <Button className="mt-2" variant="secondary" size="sm"
+          <Button className="mt-2" variant="dark" size="sm"
             onClick={handleClick} 
             disabled={city.length === 0 || status === "submitting"} >
-            Checking Weather
+            Check Weather
           </Button>
           <Button className="mt-2 ms-1" variant="outline-secondary" size="sm" onClick={refresh}>
             Refresh
