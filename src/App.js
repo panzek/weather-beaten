@@ -19,7 +19,7 @@ const App = () => {
         <Container className="col socials"> 
           <Row>
             <Col>
-              Social Network
+            (c) Panzek 2023. All Rights Reserved.
             </Col>
           </Row>
           <Row >

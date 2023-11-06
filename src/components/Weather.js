@@ -76,7 +76,7 @@ const Weather = () => {
 
   return (
     <Card className="text-center shadow rounded" style={{ width: '20rem', height: '25rem' }}>
-      <Card.Header as="h4" className="text-muted mb-2">Weather Beaten App</Card.Header>
+      <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
       <Card.Body>
         <Card.Text>
         <Form.Control 
@@ -122,7 +122,7 @@ const Weather = () => {
               </Col>
             </Row>
           </Row>
-          ) : <Row>Enter city and click search button</Row>
+          ) : <Row><Col>Enter city & click Check Weather button</Col></Row>
         }
         </Card.Text>
       </Card.Body>
