@@ -21,5 +21,12 @@
   align-items: center;
 }
 
+.icon-color {
+  color: black;
+}
+
+.icon-color:hover {
+  color: blueviolet;
+}
 
 
