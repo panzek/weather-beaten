@@ -9,26 +9,63 @@ const Footer = ({ copyrights}) => {
             <Container className="col socials"> 
                 <Row>
                     <Col>
-                    { copyrights} 
+                    {copyrights} 
                     </Col>
                 </Row>
                 <Row >
                     <Col>
-                        <a href="https://twitter.com/ipanzek" target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon="fa-brands fa-twitter" size="lg"  className="icon-color"/>
+                        <a 
+                            href="https://twitter.com/ipanzek" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            aria-label="Go to Developer's Twitter page (opens new tab on third party site)"
+                            title="Twitter">
+                            <FontAwesomeIcon 
+                                icon="fa-brands fa-twitter" 
+                                size="lg"  
+                                className="icon-color"
+                            />
+                            <span className="sr-only">
+                                Twitter
+                            </span>
                         </a>
                     </Col>
                     <Col>
-                        <a href="https://instagram.com/panzek" target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon="fa-brands fa-instagram" size="lg" className="icon-color"/>
+                        <a 
+                            href="https://instagram.com/panzek" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            aria-label="Go to Developer's Instagram page (opens new tab on third party site" 
+                            title="Instagram">
+                            <FontAwesomeIcon 
+                                icon="fa-brands fa-instagram" 
+                                aria-hidden="true" 
+                                size="lg" 
+                                className="icon-color"
+                            />
+                            <span className="sr-only">
+                                Instagram
+                            </span>
                         </a>
                     </Col>
                     <Col>
-                        <a href="https://github.com/panzek" target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon="fa-brands fa-github" size="lg" className="icon-color"/>
+                        <a 
+                            href="https://github.com/panzek" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            aria-label="Go to developer's GitHub page (opens new tab on third party site"
+                            title="GitHub">
+                            <FontAwesomeIcon 
+                            icon="fa-brands fa-github" 
+                            size="lg" 
+                            className="icon-color"                                
+                            />
+                        <span className="sr-only">
+                            GitHub
+                        </span>
                         </a>
                     </Col>
-            </Row>
+                </Row>
             </Container>
         </>
     )
