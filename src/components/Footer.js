@@ -21,7 +21,8 @@ const Footer = ({ copyrights}) => {
                             aria-label="Go to Developer's Twitter page (opens new tab on third party site)"
                             title="Twitter">
                             <FontAwesomeIcon 
-                                icon="fa-brands fa-twitter" 
+                                icon="fa-brands fa-twitter"
+                                aria-hidden="true" 
                                 size="lg"  
                                 className="icon-color"
                             />
@@ -56,7 +57,8 @@ const Footer = ({ copyrights}) => {
                             aria-label="Go to developer's GitHub page (opens new tab on third party site"
                             title="GitHub">
                             <FontAwesomeIcon 
-                            icon="fa-brands fa-github" 
+                            icon="fa-brands fa-github"
+                            aria-hidden="true" 
                             size="lg" 
                             className="icon-color"                                
                             />
