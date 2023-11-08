@@ -3,11 +3,11 @@ import './App.css';
 import Navigation from './components/Navbar.js';
 import Weather from './components/Weather';
 import Footer from './components/Footer';
-import Time from './components/Time';
+import Buttons from './components/Buttons.js';
 import './Fontawesome.js';
 
 import { DateTime } from 'luxon';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 
 const App = () => {
 
@@ -83,25 +83,42 @@ const App = () => {
   return (
     <>
       <Navigation />
-        <Row >
+        <Row>
           <Col className="col display">
             <header className="App-header">
-            <Weather 
-              refresh={refresh}
-              weather={weather}
-              city={city}
-              status={status}
-              error={error}
-              displayTime={displayTime}
-              handleChange={handleChange}
-              handleClick={handleClick}
-              getWeatherIcon={getWeatherIcon}
-              refreshText="Refresh"
-              heading="Weather-Beaten App"
-              checkWeather="Check Weather"
-            />
-            <Time />
-          </header>
+            <Card className="text-center shadow-sm border-0" style={{ width: '21rem', height: '27rem' }}>
+              <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
+              <Card.Body>
+                <Card.Text className="mb-0">
+                <Buttons 
+                  refresh={refresh}
+                  city={city} 
+                  status={status}
+                  handleChange={handleChange}
+                  handleClick={handleClick}
+                  checkWeather="Check Weather"
+                  refreshText="Refresh"
+                />
+                </Card.Text>
+                <Card.Text className="mt-0">
+                <Weather 
+                  refresh={refresh}
+                  weather={weather}
+                  city={city}
+                  status={status}
+                  error={error}
+                  displayTime={displayTime}
+                  handleChange={handleChange}
+                  handleClick={handleClick}
+                  getWeatherIcon={getWeatherIcon}
+                  refreshText="Refresh"
+                  heading="Weather-Beaten App"
+                  checkWeather="Check Weather"
+                />
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            </header>
           </Col>
         </Row>
         <Row>
