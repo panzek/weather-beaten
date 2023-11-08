@@ -12,13 +12,15 @@ const Weather = ({
   handleChange,
   handleClick,
   getWeatherIcon,
+  refreshText,
+  heading
 }) => {
   
   return (
     <Row>
       <Col>
         <Card className="text-center shadow rounded" style={{ width: '21rem', height: '28rem' }}>
-          <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
+            <Card.Header as="h4" className="text-muted mb-2">{heading}</Card.Header>
           <Card.Body>
             <Card.Text>
               <Form.Control 
@@ -35,7 +37,7 @@ const Weather = ({
                   Check Weather
                 </Button>
                 <Button className="mt-2 ms-1" variant="outline-secondary" size="sm" onClick={refresh}>
-                  Refresh
+                  {refreshText}
                 </Button>
             </Card.Text>
             <Card.Text>{ error && <div>{error}</div> }</Card.Text>

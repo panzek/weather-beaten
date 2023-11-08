@@ -96,6 +96,8 @@ const App = () => {
               handleChange={handleChange}
               handleClick={handleClick}
               getWeatherIcon={getWeatherIcon}
+              refreshText="Refresh"
+              heading="Weather-Beaten App"
             />
             <Time />
           </header>
