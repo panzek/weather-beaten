@@ -98,6 +98,7 @@ const App = () => {
               getWeatherIcon={getWeatherIcon}
               refreshText="Refresh"
               heading="Weather-Beaten App"
+              checkWeather="Check Weather"
             />
             <Time />
           </header>
