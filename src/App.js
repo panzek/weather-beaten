@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/Navbar.js';
 import Weather from './components/Weather';
 import Footer from './components/Footer';
-import Buttons from './components/Buttons.js';
+import Buttons from './components/Buttons/Buttons';
 import './Fontawesome.js';
 
 import { DateTime } from 'luxon';
@@ -39,7 +39,7 @@ const App = () => {
       const time = DateTime.fromSeconds(data.dt + data.timezone);
       //define data and time format
       const cityTime = time.toLocaleString(
-        {
+        { 
           hour: "2-digit",
           minute: "2-digit",
           weekday: "short",
