@@ -83,9 +83,9 @@ const App = () => {
   return (
     <>
       <Navigation />
-        <Row>
-          <Col className="col display">
-            <header className="App-header">
+      <Row>
+        <Col className="col display">
+          <header className="App-header">
             <Card className="text-center shadow-sm border-0" style={{ width: '21rem', height: '27rem' }}>
               <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
               <Card.Body>
@@ -118,14 +118,14 @@ const App = () => {
                 </Card.Text>
               </Card.Body>
             </Card>
-            </header>
-          </Col>
-        </Row>
-        <Row>
-          <Footer 
-              copyrights="&copy;Panzek 2023. All Rights Reserved."
-            />
-        </Row>
+          </header>
+        </Col>
+      </Row>
+      <Row>
+        <Footer 
+            copyrights="&copy;Panzek 2023. All Rights Reserved."
+          />
+      </Row>
     </>
   )
 }

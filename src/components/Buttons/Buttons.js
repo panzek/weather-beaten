@@ -25,7 +25,7 @@ const Buttons = ({
           placeholder="Enter City..." />
           <Button className="mt-2" variant="dark" size="sm"
             onClick={handleClick} 
-            disabled={city.length === 0 || status === "submitting"} >
+            disabled={city?.length === 0 || status === "submitting"} >
             {checkWeather}
           </Button>
           <Button className="mt-2 ms-1" variant="outline-secondary" size="sm" onClick={refresh}>
