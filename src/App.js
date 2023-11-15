@@ -90,31 +90,31 @@ const App = () => {
               <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
               <Card.Body>
                 <Card.Text className="mb-0">
-                <Buttons 
-                  refresh={refresh}
-                  city={city} 
-                  status={status}
-                  handleChange={handleChange}
-                  handleClick={handleClick}
-                  checkWeather="Check Weather"
-                  refreshText="Refresh"
-                />
+                  <Buttons 
+                    refresh={refresh}
+                    city={city} 
+                    status={status}
+                    handleChange={handleChange}
+                    handleClick={handleClick}
+                    checkWeather="Check Weather"
+                    refreshText="Refresh"
+                  />
                 </Card.Text>
                 <Card.Text className="mt-0">
-                <Weather 
-                  refresh={refresh}
-                  weather={weather}
-                  city={city}
-                  status={status}
-                  error={error}
-                  displayTime={displayTime}
-                  handleChange={handleChange}
-                  handleClick={handleClick}
-                  getWeatherIcon={getWeatherIcon}
-                  refreshText="Refresh"
-                  heading="Weather-Beaten App"
-                  checkWeather="Check Weather"
-                />
+                  <Weather 
+                    refresh={refresh}
+                    weather={weather}
+                    city={city}
+                    status={status}
+                    error={error}
+                    displayTime={displayTime}
+                    handleChange={handleChange}
+                    handleClick={handleClick}
+                    getWeatherIcon={getWeatherIcon}
+                    refreshText="Refresh"
+                    heading="Weather-Beaten App"
+                    checkWeather="Check Weather"
+                  />
                 </Card.Text>
               </Card.Body>
             </Card>
