@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import Buttons from './Buttons';
 
 describe('Buttons component', () => {
+
     it('shows 2 buttons being rendered', () => {
         render(<Buttons />);
         const buttons = screen.getAllByRole('button');
@@ -12,16 +13,16 @@ describe('Buttons component', () => {
     it('Button is disabled when city length is 0 and status is submitting', () => {
       //Create mock props
       const mockProps = {
-        refresh: jest.fn(),
-        city: 'EnteredCity',
+        // refresh: jest.fn(),
+        // city: 'EnteredCity',
         handleChange: jest.fn(),
         status: 'submitting',
         handleClick: jest.fn(),
         checkWeather: 'Check Weather',
-        refreshTest: 'Refresh',
+        // refreshTest: 'Refresh',
       };
 
-      // Render Component and mockprops
+      // Render Component with mockprops into the DOM
       render(<Buttons { ...mockProps } /> );
 
       // Query the button
@@ -29,12 +30,45 @@ describe('Buttons component', () => {
         name: /Check Weather/i 
       });
 
-      // Simulate a button click click using userEvent
+      // Simulate a button click using userEvent
       userEvent.click(checkWeatherBtn);
 
       // Assert the button is disabled
       expect(checkWeatherBtn).toBeDisabled();
 
-    })
+    });
+
+    it('Button is enabled when city length is greater than 0 and status is empty', () => {
+      //Create mock props
+      const mockProps = {
+        refresh: jest.fn(),
+        city: 'EnteredCity',
+        handleChange: jest.fn(),
+        status: 'empty',
+        handleClick: jest.fn(),
+        checkWeather: 'Check Weather',
+        refreshText: 'Refresh',
+      };
+
+      // Render Component with mockprops into the DOM
+      render(<Buttons { ...mockProps } /> );
+
+      // Query the button
+      // Click will trigger hover events before clicking, 
+      // set the skipHover option to true to disable it
+      const checkWeatherBtn = screen.getByRole('button', { 
+        skipHover: true, name: /Check Weather/i 
+      });
+
+      // Simulate a button click using userEvent
+      userEvent.click(checkWeatherBtn);
+
+      // assertion based on the userEvent
+      expect(checkWeatherBtn).toHaveTextContent('Check Weather');
+
+      // Assert the button is disabled
+      expect(checkWeatherBtn).not.toBeDisabled();
+
+    });
 
 });
