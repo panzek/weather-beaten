@@ -68,4 +68,24 @@ describe('Buttons component', () => {
 
     });
 
+    it('Button should have refresh text content', () => {
+      
+      const mockProps = {
+        refresh: jest.fn(),
+        handleClick: jest.fn(),
+        refreshText: 'Refresh',
+      };
+
+      render(<Buttons { ...mockProps } />);
+
+      const refreshBtn = screen.getByRole('button', {
+        name: /refresh/i
+      });
+
+      userEvent.click(refreshBtn);
+
+      expect(refreshBtn).toHaveTextContent('Refresh');
+
+    });
+
 });
