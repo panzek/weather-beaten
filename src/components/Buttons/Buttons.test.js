@@ -13,13 +13,10 @@ describe('Buttons component', () => {
     it('Button is disabled when city length is 0 and status is submitting', () => {
       //Create mock props
       const mockProps = {
-        // refresh: jest.fn(),
-        // city: 'EnteredCity',
         handleChange: jest.fn(),
         status: 'submitting',
         handleClick: jest.fn(),
         checkWeather: 'Check Weather',
-        // refreshTest: 'Refresh',
       };
 
       // Render Component with mockprops into the DOM
