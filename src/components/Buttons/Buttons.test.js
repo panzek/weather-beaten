@@ -57,7 +57,7 @@ describe('Buttons component', () => {
         skipHover: true, name: /Check Weather/i 
       });
 
-      // Simulate a button click using userEvent
+      // Simulate a button click event using userEvent
       userEvent.click(checkWeatherBtn);
 
       // assertion based on the userEvent
@@ -85,6 +85,29 @@ describe('Buttons component', () => {
       userEvent.click(refreshBtn);
 
       expect(refreshBtn).toHaveTextContent('Refresh');
+
+    });
+
+    it('Use userEvent type to Check that input should change', async () => {
+      
+      //Configure an 'instance' of user-event
+      const user = userEvent.setup();
+
+      render(<Buttons />);
+
+      // Query the input
+      const inputField = screen.getByRole('textbox');
+
+      // Provide a specific value to be entered into the input 
+      // field during test
+      const enterCity = "Enter City";
+      
+      // Use userEvent to simulate a user typing inside an input field
+      await user.type(inputField, enterCity);
+
+      // Check if the input successfully updates its value in 
+      // response to the simulated type event
+      expect(inputField).toHaveValue(enterCity);
 
     });
 
