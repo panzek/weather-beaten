@@ -31,7 +31,7 @@ const App = () => {
     try {
       const response = await fetch(apiUrl);
         if(!response.ok) {
-          throw Error('Unable to fetch weather data');
+          throw Error('No results found');
         }
       const data = await response.json();
       console.log('Data from OpenweatherAPI:', data);
