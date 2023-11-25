@@ -24,7 +24,7 @@ const Weather = ({
               Wind Speed: {weather.wind.speed}km/hr. Humidity: {weather.main.humidity}%
             </Card.Text>
         </Card.Body>
-        ) : <Card.Text>Enter city & click Check Weather button</Card.Text>
+        ) : <Card.Text></Card.Text>
       }
     </>
   )
