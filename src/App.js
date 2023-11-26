@@ -89,10 +89,10 @@ return (
     <Row>
       <Col className="col display">
         <header className="App-header">
-          <Card className="text-center shadow-sm border-0" style={{ width: '21rem', height: '27rem' }}>
+          <Card className="text-center shadow-sm border-0" style={{ width: '21rem', height: '27rem', color: 'red' }}>
             <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
             <Card.Body>
-              <Card.Text className="mb-0">
+              <Card.Text className="mb-0"> 
                 <Buttons 
                   refresh={refresh}
                   city={city} 
@@ -125,9 +125,9 @@ return (
       </Col>
     </Row>
     <Row>
-      <Footer 
-          copyrights="&copy;Panzek 2023. All Rights Reserved."
-        />
+      <Footer
+        copyrights="&copy;Panzek 2023. All Rights Reserved."
+      />
     </Row>
   </>
 )
