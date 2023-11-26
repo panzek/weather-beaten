@@ -7,12 +7,8 @@ const Footer = ({ copyrights}) => {
     return (
         <>
             <Container className="col socials"> 
-                <Row>
-                    <Col>
-                    {copyrights} 
-                    </Col>
-                </Row>
-                <Row>
+                
+                <Row className="position-absolute top-100 start-50 translate-middle">
                     <Col>
                         <a 
                             href="https://twitter.com/ipanzek" 
@@ -68,6 +64,7 @@ const Footer = ({ copyrights}) => {
                         </a>
                     </Col>
                 </Row>
+           
             </Container>
         </>
     )

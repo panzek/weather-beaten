@@ -86,10 +86,10 @@ const App = () => {
 return (
   <>
     <Navigation />
-    <Row>
-      <Col className="col display">
+    <Row className="position-relative">
+      <Col className="col display position-relative">
         <header className="App-header">
-          <Card className="text-center shadow-sm border-0" style={{ width: '21rem', height: '27rem', color: 'red' }}>
+          <Card className="text-center shadow-sm" style={{ width: '21rem', height: '27rem' }}>
             <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
             <Card.Body>
               <Card.Text className="mb-0"> 
@@ -119,15 +119,22 @@ return (
                   checkWeather="Check Weather"
                 />
               </Card.Text>
+              <Card.Text>
+              <Footer 
+                className="position-absolute icons ms-auto"
+              />
+            </Card.Text>
             </Card.Body>
           </Card>
+          
         </header>
       </Col>
     </Row>
-    <Row>
-      <Footer
-        copyrights="&copy;Panzek 2023. All Rights Reserved."
-      />
+    <Row 
+      className="justify-content-center position-absolute bottom-0 start-50 translate-middle-x"
+      style={{ fontSize: '0.8rem' }}
+    >
+        &copy;Panzek 2023. All Rights Reserved.
     </Row>
   </>
 )
