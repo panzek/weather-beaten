@@ -7,7 +7,7 @@ import Buttons from './components/Buttons/Buttons';
 import './Fontawesome.js';
 
 import { DateTime } from 'luxon';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const App = () => {
 
@@ -28,8 +28,6 @@ const App = () => {
   // Fetch data from weather API without using useEffect 
   const getWeather = async () => {
     try {
-
-      // second api call for weather
       const apiUrl = `${REACT_APP_API_URL}/weather?q=${city}&limit=5&appid=${REACT_APP_API_KEY}&units=metric`;
       const response = await fetch(apiUrl);
       
@@ -86,56 +84,54 @@ const App = () => {
 return (
   <>
     <Navigation />
-    <Row className="position-relative">
-      <Col className="col display position-relative">
-        <header className="App-header">
-          <Card className="text-center shadow-sm" style={{ width: '21rem', height: '27rem' }}>
-            <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
-            <Card.Body>
-              <Card.Text className="mb-0"> 
-                <Buttons 
-                  refresh={refresh}
-                  city={city} 
-                  status={status}
-                  handleChange={handleChange}
-                  handleClick={handleClick}
-                  checkWeather="Check Weather"
-                  refreshText="Refresh"
+    <Container>
+      <Row className="position-relative">
+        <Col className="col display position-relative">
+            <Card className="text-center shadow-sm" style={{ width: '21rem', height: '28rem' }}>
+              <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
+              <Card.Body>
+                <Card.Text className="mb-0"> 
+                  <Buttons 
+                    refresh={refresh}
+                    city={city} 
+                    status={status}
+                    handleChange={handleChange}
+                    handleClick={handleClick}
+                    checkWeather="Check Weather"
+                    refreshText="Refresh"
+                  />
+                </Card.Text>
+                <Card.Text className="mt-0">
+                  <Weather 
+                    refresh={refresh}
+                    weather={weather}
+                    city={city}
+                    status={status}
+                    error={error}
+                    displayTime={displayTime}
+                    handleChange={handleChange}
+                    handleClick={handleClick}
+                    getWeatherIcon={getWeatherIcon}
+                    refreshText="Refresh"
+                    heading="Weather-Beaten App"
+                    checkWeather="Check Weather"
+                  />
+                </Card.Text>
+                <Card.Text>
+                <Footer 
+                  className="position-absolute icons ms-auto"
+                  copyrights="&copy;Panzek 2023. All Rights Reserved."
                 />
               </Card.Text>
-              <Card.Text className="mt-0">
-                <Weather 
-                  refresh={refresh}
-                  weather={weather}
-                  city={city}
-                  status={status}
-                  error={error}
-                  displayTime={displayTime}
-                  handleChange={handleChange}
-                  handleClick={handleClick}
-                  getWeatherIcon={getWeatherIcon}
-                  refreshText="Refresh"
-                  heading="Weather-Beaten App"
-                  checkWeather="Check Weather"
-                />
-              </Card.Text>
-              <Card.Text>
-              <Footer 
-                className="position-absolute icons ms-auto"
-              />
-            </Card.Text>
-            </Card.Body>
-          </Card>
-          
-        </header>
-      </Col>
-    </Row>
-    <Row 
-      className="justify-content-center position-absolute bottom-0 start-50 translate-middle-x"
-      style={{ fontSize: '0.8rem' }}
-    >
-        &copy;Panzek 2023. All Rights Reserved.
-    </Row>
+              </Card.Body>
+            </Card>
+        </Col>
+      </Row>
+      <Row 
+        className="mt-2 justify-content-center position-absolute bottom-0 start-50 translate-middle">
+          &copy;Panzek 2023. All Rights Reserved.
+      </Row>
+    </Container>
   </>
 )
 }
