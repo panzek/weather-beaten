@@ -1,6 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Row, Col } from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Row, Col} from 'react-bootstrap';
 
 const Footer = () => {
 
@@ -51,10 +51,10 @@ const Footer = () => {
                         aria-label="Go to developer's GitHub page (opens new tab on third party site"
                         title="GitHub">
                         <FontAwesomeIcon 
-                        icon="fa-brands fa-square-github"
-                        aria-hidden="true" 
-                        size="2xl" 
-                        className="icon-color"                                
+                            icon="fa-brands fa-square-github"
+                            aria-hidden="true" 
+                            size="2xl" 
+                            className="icon-color"                                
                         />
                     <span className="sr-only">
                         GitHub
@@ -63,7 +63,7 @@ const Footer = () => {
                 </Col>
             </Row>
         </>
-    )
+    );
 }
 
-export default Footer
+export default Footer;

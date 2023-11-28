@@ -1,7 +1,7 @@
-import React from 'react';
-import {Container, Navbar} from 'react-bootstrap';
+import React from "react";
+import {Container, Navbar} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from '../images/weatherBeaten-logo.webp';
+import logo from "../images/weatherBeaten-logo.webp";
 
 const Navigation = () => {
   return (
@@ -24,7 +24,7 @@ const Navigation = () => {
         </Navbar>
       ))}
     </>
-  )
+  );
 }
 
 export default Navigation

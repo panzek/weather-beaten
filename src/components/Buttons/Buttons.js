@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Button, Form } from 'react-bootstrap';
+import {Card, Button, Form} from 'react-bootstrap';
 
 const Buttons = ({ 
   refresh, 
@@ -22,18 +22,23 @@ const Buttons = ({
           value={city} 
           onChange={handleChange} 
           disabled={status === "submitting"} 
-          placeholder="Enter City..." />
-          <Button className="mt-2" variant="dark" size="sm"
-            onClick={handleClick} 
-            disabled={city?.length === 0 || status === "submitting"} >
-            {checkWeather}
-          </Button>
-          <Button className="mt-2 ms-1" variant="outline-secondary" size="sm" onClick={refresh}>
+          placeholder="Enter City..." 
+        />
+        <Button 
+          className="mt-2" variant="dark" size="sm"
+          onClick={handleClick} 
+          disabled={city?.length === 0 || status === "submitting"} >
+          {checkWeather}
+        </Button>
+        <Button 
+          className="mt-2 ms-1" 
+          variant="outline-secondary" 
+          size="sm" onClick={refresh}>
             {refreshText}
-          </Button>
+        </Button>
       </Card.Text>
     </>
-  )
+  );
 }
 
 export default Buttons;

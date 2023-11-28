@@ -16,9 +16,8 @@ const App = () => {
   }
 
   const [weather, setWeather] = useState({});
-  const [city, setCity] = useState("");
-  // const [selectedCity, setSelectedCity] = useState("");
-  const [status, setStatus] = useState("typing");
+  const [city, setCity] = useState('');
+  const [status, setStatus] = useState('typing');
   const [error, setError] = useState(false);
   const [displayTime, setDisplayTime] = useState(null);
 
@@ -43,12 +42,12 @@ const App = () => {
       //define date and time format
       const cityTime = time.toLocaleString(
         { 
-          hour: "2-digit",
-          minute: "2-digit",
-          weekday: "short",
-          month: "short",
-          day: "2-digit",
-          year: "numeric",
+          hour: '2-digit',
+          minute: '2-digit',
+          weekday: 'short',
+          month: 'short',
+          day: '2-digit',
+          year: 'numeric',
         }
       );
 
@@ -59,7 +58,7 @@ const App = () => {
       console.error(err.message);
       setError(err.message);
     }
-}
+  }
     
   const handleChange = (e) => {
     setCity(e.target.value);
@@ -67,7 +66,7 @@ const App = () => {
 
   const handleClick = () => {
     setWeather(weather);
-    setStatus("submitting")
+    setStatus('submitting');
     getWeather();
   }
 
@@ -78,17 +77,19 @@ const App = () => {
     const icon = weather.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${icon.replace('n','d')}@2x.png`;
 
-    return <img src={iconUrl} alt="Weather Icon"></img>
+    return <img src={iconUrl} alt='Weather Icon' />;
   }
 
-return (
-  <>
-    <Navigation />
-    <Container>
-      <Row className="position-relative">
-        <Col className="col display position-relative">
-            <Card className="text-center shadow-sm" style={{ width: '21rem', height: '28rem' }}>
-              <Card.Header as="h4" className="text-muted mb-2">Weather-Beaten App</Card.Header>
+  return (
+    <>
+      <Navigation />
+      <Container>
+        <Row className="position-relative">
+          <Col className="col display position-relative">
+            <Card className="text-center shadow-sm" style={{width: "21rem", height: "28rem"}}>
+              <Card.Header as="h4" className="text-muted mb-2">
+                Weather-Beaten App
+              </Card.Header>
               <Card.Body>
                 <Card.Text className="mb-0"> 
                   <Buttons 
@@ -118,24 +119,24 @@ return (
                   />
                 </Card.Text>
                 <Card.Text>
-                <Footer 
-                  className="position-absolute icons ms-auto"
-                  copyrights="&copy;Panzek 2023. All Rights Reserved."
-                />
-              </Card.Text>
+                  <Footer 
+                    className="position-absolute icons ms-auto"
+                    copyrights="&copy;Panzek 2023. All Rights Reserved."
+                  />
+                </Card.Text>
               </Card.Body>
             </Card>
-        </Col>
-      </Row>
-      <Row 
-        className="mt-2 justify-content-center position-absolute bottom-0 start-50 translate-middle">
-          &copy;Panzek 2023. All Rights Reserved.
-      </Row>
-    </Container>
-  </>
-)
+          </Col>
+        </Row>
+        <Row 
+          className="mt-2 justify-content-center position-absolute bottom-0 start-50 translate-middle">
+            &copy;Panzek 2023. All Rights Reserved.
+        </Row>
+      </Container>
+    </>
+  );
 }
 
-export default App
+export default App;
 
 
