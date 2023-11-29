@@ -51,7 +51,7 @@ const App = () => {
           year: 'numeric',
         }
       );
-
+      
       setWeather(data);
       setDisplayTime(cityTime);
 
@@ -60,7 +60,17 @@ const App = () => {
       setError(err.message);
     }
   }
-    
+  
+  // Get the current year
+  const getCurrentYear = () => {
+    // Create a local DateTime
+    const dateTime = DateTime.local();
+    // Get the year
+    return dateTime.year;
+  }
+
+  const currentYear = getCurrentYear();
+ 
   const handleChange = (e) => {
     setCity(e.target.value);
   }
@@ -131,7 +141,7 @@ const App = () => {
         <Row >
           <Col >
             <Footer 
-              copyrights="&copy;Panzek 2023. All Rights Reserved."
+              currentYear={currentYear}
             />
           </Col>
         </Row>
