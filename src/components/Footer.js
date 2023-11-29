@@ -7,8 +7,9 @@ const Footer = ({currentYear}) => {
   return (
     <>
         <Card.Text 
-            style={{fontSize: "0.9rem"}} 
-            className="position-absolute bottom-0 start-50 translate-middle mb-1">
+            className="position-absolute bottom-0 start-50 translate-middle w-100 text-center mb-1"
+            style={{fontSize: "0.9rem"}}
+        >
             &copy;Panzek {currentYear}. All Rights Reserved. 
         </Card.Text>
     </>
