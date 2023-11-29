@@ -4,6 +4,7 @@ import Navigation from './components/Navbar.js';
 import Weather from './components/Weather';
 import Footer from './components/Footer';
 import Buttons from './components/Buttons/Buttons';
+import Socials from './components/Socials/Socials';
 import './Fontawesome.js';
 
 import { DateTime } from 'luxon';
@@ -119,18 +120,20 @@ const App = () => {
                   />
                 </Card.Text>
                 <Card.Text>
-                  <Footer 
-                    className="position-absolute icons ms-auto"
-                    copyrights="&copy;Panzek 2023. All Rights Reserved."
+                  <Socials 
+                    className="position-absolute icons"
                   />
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        <Row 
-          className="mt-2 justify-content-center position-absolute bottom-0 start-50 translate-middle">
-            &copy;Panzek 2023. All Rights Reserved.
+        <Row >
+          <Col >
+            <Footer 
+              copyrights="&copy;Panzek 2023. All Rights Reserved."
+            />
+          </Col>
         </Row>
       </Container>
     </>
