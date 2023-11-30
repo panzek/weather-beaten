@@ -7,7 +7,7 @@ const Socials = () => {
     return (
         <>  
             <Row className="position-absolute top-100 start-50 w-100 ms-0 translate-middle">
-                <Col>
+                <Col >
                     <a 
                         href="https://twitter.com/ipanzek" 
                         target="_blank" 

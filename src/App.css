@@ -15,27 +15,10 @@
   align-items: center;
 }
 
-.socials {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .icon-color {
   color: black;
 }
 
 .icon-color:hover {
   color: blueviolet;
-}
-
-
-.icons {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-.5 * var(--bs-gutter-x));
-  margin-left: calc(-.5 * var(--bs-gutter-x));
 }

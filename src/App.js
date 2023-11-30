@@ -68,8 +68,6 @@ const App = () => {
     // Get the year
     return dateTime.year;
   }
-
-  const currentYear = getCurrentYear();
  
   const handleChange = (e) => {
     setCity(e.target.value);
@@ -95,14 +93,14 @@ const App = () => {
     <>
       <Navigation />
       <Container>
-        <Row className="position-relative">
-          <Col className="col display position-relative">
+        <Row>
+          <Col className="display position-relative">
             <Card className="text-center shadow-sm" style={{width: "21rem", height: "28rem"}}>
-              <Card.Header as="h4" className="text-muted mb-2">
+              <Card.Header className="text-muted fw-bold" style={{fontSize: "1.4rem"}}>
                 Weather-Beaten App
               </Card.Header>
               <Card.Body>
-                <Card.Text className="mb-0"> 
+                <Card.Text> 
                   <Buttons 
                     refresh={refresh}
                     city={city} 
@@ -113,7 +111,8 @@ const App = () => {
                     refreshText="Refresh"
                   />
                 </Card.Text>
-                <Card.Text className="mt-0">
+              </Card.Body>
+              <Card.Body >
                   <Weather 
                     refresh={refresh}
                     weather={weather}
@@ -128,12 +127,9 @@ const App = () => {
                     heading="Weather-Beaten App"
                     checkWeather="Check Weather"
                   />
-                </Card.Text>
-                <Card.Text>
-                  <Socials 
-                    className="position-absolute icons"
-                  />
-                </Card.Text>
+              </Card.Body>
+              <Card.Body >
+                <Socials />
               </Card.Body>
             </Card>
           </Col>
@@ -141,7 +137,7 @@ const App = () => {
         <Row >
           <Col >
             <Footer 
-              currentYear={currentYear}
+              getCurrentYear={getCurrentYear}
             />
           </Col>
         </Row>
