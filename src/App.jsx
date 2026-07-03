@@ -32,6 +32,7 @@ const App = () => {
     try {
       const response = await axios.get(`${VITE_API_URL}/weather?q=${city}&APPID=${VITE_API_KEY}&units=metric`);
       const data = response.data;
+      console.log("API Data", data)
 
       // extract coordinates from returned data
       const { dt, timezone } = data;
