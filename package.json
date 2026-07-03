@@ -11,24 +11,24 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "ajv": "^6.12.6",
+    "axios": "^1.18.1",
     "bootstrap": "^5.3.1",
     "dotenv": "^16.3.1",
     "jest-watch-typeahead": "^0.6.5",
     "luxon": "^3.4.3",
-    "react": "^18.2.0",
+    "react": "^19.2.7",
     "react-bootstrap": "^2.8.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.2.7",
     "react-error-boundary": "^4.0.11",
-    "react-scripts": "5.0.1",
     "typescript": "^3.9.10",
     "web-vitals": "^2.1.4",
     "webpack-dev-middleware": "^6.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +52,8 @@
     "@babel/core": "^7.23.3",
     "@babel/plugin-transform-private-property-in-object": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
-    "@testing-library/user-event": "^14.5.1"
+    "@testing-library/user-event": "^14.5.1",
+    "@vitejs/plugin-react": "^6.0.3",
+    "vite": "^8.1.3"
   }
 }
