@@ -3,112 +3,105 @@ import userEvent from '@testing-library/user-event';
 import Buttons from './Buttons';
 
 describe('Buttons component', () => {
+	it('shows 2 buttons being rendered', () => {
+		render(<Buttons />);
+		const buttons = screen.getAllByRole('button');
+		expect(buttons).toHaveLength(2);
+	});
 
-    it('shows 2 buttons being rendered', () => {
-        render(<Buttons />);
-        const buttons = screen.getAllByRole('button');
-        expect(buttons).toHaveLength(2);
-      });
+	it('Button is disabled when city length is 0 and status is submitting', () => {
+		//Create mock props
+		const mockProps = {
+			handleChange: jest.fn(),
+			status: 'submitting',
+			handleClick: jest.fn(),
+			checkWeather: 'Check Weather',
+		};
 
-    it('Button is disabled when city length is 0 and status is submitting', () => {
-      //Create mock props
-      const mockProps = {
-        handleChange: jest.fn(),
-        status: 'submitting',
-        handleClick: jest.fn(),
-        checkWeather: 'Check Weather',
-      };
+		// Render Component with mockprops into the DOM
+		render(<Buttons {...mockProps} />);
 
-      // Render Component with mockprops into the DOM
-      render(<Buttons { ...mockProps } /> );
+		// Query the button
+		const checkWeatherBtn = screen.getByRole('button', {
+			name: /Check Weather/i,
+		});
 
-      // Query the button
-      const checkWeatherBtn = screen.getByRole('button', { 
-        name: /Check Weather/i 
-      });
+		// Simulate a button click using userEvent
+		userEvent.click(checkWeatherBtn);
 
-      // Simulate a button click using userEvent
-      userEvent.click(checkWeatherBtn);
+		// Assert the button is disabled
+		expect(checkWeatherBtn).toBeDisabled();
+	});
 
-      // Assert the button is disabled
-      expect(checkWeatherBtn).toBeDisabled();
+	it('Button is enabled when city length is greater than 0 and status is empty', () => {
+		//Create mock props
+		const mockProps = {
+			refresh: jest.fn(),
+			city: 'EnteredCity',
+			handleChange: jest.fn(),
+			status: 'empty',
+			handleClick: jest.fn(),
+			checkWeather: 'Check Weather',
+			refreshText: 'Refresh',
+		};
 
-    });
+		// Render Component with mockprops into the DOM
+		render(<Buttons {...mockProps} />);
 
-    it('Button is enabled when city length is greater than 0 and status is empty', () => {
-      //Create mock props
-      const mockProps = {
-        refresh: jest.fn(),
-        city: 'EnteredCity',
-        handleChange: jest.fn(),
-        status: 'empty',
-        handleClick: jest.fn(),
-        checkWeather: 'Check Weather',
-        refreshText: 'Refresh',
-      };
+		// Query the button
+		// Click will trigger hover events before clicking,
+		// set the skipHover option to true to disable it
+		const checkWeatherBtn = screen.getByRole('button', {
+			skipHover: true,
+			name: /Check Weather/i,
+		});
 
-      // Render Component with mockprops into the DOM
-      render(<Buttons { ...mockProps } /> );
+		// Simulate a button click event using userEvent
+		userEvent.click(checkWeatherBtn);
 
-      // Query the button
-      // Click will trigger hover events before clicking, 
-      // set the skipHover option to true to disable it
-      const checkWeatherBtn = screen.getByRole('button', { 
-        skipHover: true, name: /Check Weather/i 
-      });
+		// assertion based on the userEvent
+		expect(checkWeatherBtn).toHaveTextContent('Check Weather');
 
-      // Simulate a button click event using userEvent
-      userEvent.click(checkWeatherBtn);
+		// Assert the button is disabled
+		expect(checkWeatherBtn).not.toBeDisabled();
+	});
 
-      // assertion based on the userEvent
-      expect(checkWeatherBtn).toHaveTextContent('Check Weather');
+	it('Button should have refresh text content', () => {
+		const mockProps = {
+			refresh: jest.fn(),
+			handleClick: jest.fn(),
+			refreshText: 'Refresh',
+		};
 
-      // Assert the button is disabled
-      expect(checkWeatherBtn).not.toBeDisabled();
+		render(<Buttons {...mockProps} />);
 
-    });
+		const refreshBtn = screen.getByRole('button', {
+			name: /refresh/i,
+		});
 
-    it('Button should have refresh text content', () => {
-      
-      const mockProps = {
-        refresh: jest.fn(),
-        handleClick: jest.fn(),
-        refreshText: 'Refresh',
-      };
+		userEvent.click(refreshBtn);
 
-      render(<Buttons { ...mockProps } />);
+		expect(refreshBtn).toHaveTextContent('Refresh');
+	});
 
-      const refreshBtn = screen.getByRole('button', {
-        name: /refresh/i
-      });
+	it('Use userEvent type to Check that input should change', async () => {
+		//Configure an 'instance' of user-event
+		const user = userEvent.setup();
 
-      userEvent.click(refreshBtn);
+		render(<Buttons />);
 
-      expect(refreshBtn).toHaveTextContent('Refresh');
+		// Query the input
+		const inputField = screen.getByRole('textbox');
 
-    });
+		// Provide a specific value to be entered into the input
+		// field during test
+		const enterCity = 'Enter City';
 
-    it('Use userEvent type to Check that input should change', async () => {
-      
-      //Configure an 'instance' of user-event
-      const user = userEvent.setup();
+		// Use userEvent to simulate a user typing inside an input field
+		await user.type(inputField, enterCity);
 
-      render(<Buttons />);
-
-      // Query the input
-      const inputField = screen.getByRole('textbox');
-
-      // Provide a specific value to be entered into the input 
-      // field during test
-      const enterCity = "Enter City";
-      
-      // Use userEvent to simulate a user typing inside an input field
-      await user.type(inputField, enterCity);
-
-      // Check if the input successfully updates its value in 
-      // response to the simulated type event
-      expect(inputField).toHaveValue(enterCity);
-
-    });
-
+		// Check if the input successfully updates its value in
+		// response to the simulated type event
+		expect(inputField).toHaveValue(enterCity);
+	});
 });

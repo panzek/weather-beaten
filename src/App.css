@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* .App {
@@ -8,17 +8,17 @@
 } */
 
 .display {
-  display: flex;
-  width: 100vw;
-  height: 80vh;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	width: 100vw;
+	height: 80vh;
+	justify-content: center;
+	align-items: center;
 }
 
 .icon-color {
-  color: black;
+	color: black;
 }
 
 .icon-color:hover {
-  color: blueviolet;
+	color: blueviolet;
 }
