@@ -47,4 +47,4 @@ jobs:
         env:
           VITE_API_KEY: "dcac3ca5c471b037af561727eeb52f9c"
           VITE_API_URL: "https://api.openweathermap.org/data/2.5/"
-          NODE_ENV: "development"
+          NODE_ENV: development
