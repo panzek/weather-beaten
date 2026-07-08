@@ -11,10 +11,6 @@ export default defineConfig({
             },
         }),
     ],
-
-    build: {
-        outDir: 'build',        // Keeps same output folder as CRA
-    },
     server: {
         port: 3000,             // Same port as CRA
         open: true,             // Auto open browser
