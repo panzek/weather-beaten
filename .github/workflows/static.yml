@@ -47,4 +47,4 @@ jobs:
         env:
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          NODE_ENV: development
+          NODE_ENV: "development"
