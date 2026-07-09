@@ -8,13 +8,13 @@ const Socials = () => {
         <Row className="position-absolute top-100 start-50 w-100 ms-0 translate-middle">
             <Col >
                 <a
-                    href="https://twitter.com/ipanzek"
+                    href="https://www.tiktok.com/@panzeksolutions"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="Go to Developer's Twitter page (opens new tab on third party site)"
-                    title="Twitter">
+                    aria-label="Go to Developer's TikTok page (opens new tab on third party site)"
+                    title="TikTok">
                     <FontAwesomeIcon
-                        icon="fa-brands fa-square-x-twitter"
+                        icon="fa-brands fa-tiktok"
                         aria-hidden="true"
                         size="2xl"
                         className="icon-color"
@@ -26,7 +26,7 @@ const Socials = () => {
             </Col>
             <Col>
                 <a
-                    href="https://instagram.com/panzek"
+                    href="https://instagram.com/panzeksolutions"
                     target="_blank"
                     rel="noreferrer"
                     aria-label="Go to Developer's Instagram page (opens new tab on third party site"
