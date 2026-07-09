@@ -1,6 +1,6 @@
 # weather-beaten
 
-Free weather app to check the weather condition for cities
+Free weather app to check the weather condition for cities [Live site](https://panzek.github.io/weather-beaten/).
 
 ## Getting Started with Create React App
 
