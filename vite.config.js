@@ -11,6 +11,7 @@ export default defineConfig({
             },
         }),
     ],
+    base: "/weather-beaten/",
     server: {
         port: 3000,             // Same port as CRA
         open: true,             // Auto open browser
