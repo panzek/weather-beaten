@@ -18,8 +18,8 @@ const App = () => {
 
 	const [weather, setWeather] = useState({});
 	const [city, setCity] = useState('');
-	const [status, setStatus] = useState('typing');
-	const [error, setError] = useState(false);
+	const [status, setStatus] = useState('idle');
+	const [error, setError] = useState(null);
 	const [displayTime, setDisplayTime] = useState(null);
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -46,9 +46,13 @@ const App = () => {
 
 			setWeather(data);
 			setDisplayTime(cityTime);
+			setStatus('success');
 		} catch (err) {
-			console.error(err.message);
+			console.error(err);
+			const errorMessage = err.response?.data?.message || err.message || 'Failed to fetch weather data';
 			setError(err.message);
+			setStatus('error');
+			setWeather({})
 		}
 	};
 
@@ -62,17 +66,17 @@ const App = () => {
 	};
 
 	const handleClick = async () => {
-		if (!city) return;
+		if (!city?.trim()) return;
 
 		setIsLoading(true);
-		setStatus('submitting');
+		setStatus('loading');
+		setError(null)
 
 		await new Promise((resolve) => setTimeout(resolve, 1500));
 
 		await getWeather();
 
 		setIsloading(false);
-		setStatus('typing');
 	};
 
 	const getWeatherIcon = () => {
@@ -122,6 +126,7 @@ const App = () => {
 									status={status}
 									error={error}
 									displayTime={displayTime}
+									isLoading={isLoading}
 									handleChange={handleChange}
 									handleClick={handleClick}
 									getWeatherIcon={getWeatherIcon}
