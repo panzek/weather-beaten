@@ -5,6 +5,7 @@ const Buttons = ({
 	city,
 	handleChange,
 	status,
+	isLoading,
 	handleClick,
 	checkWeather,
 	refreshText,
@@ -17,7 +18,7 @@ const Buttons = ({
 				type="text"
 				value={city}
 				onChange={handleChange}
-				disabled={status === 'submitting'}
+				disabled={isLoading}
 				placeholder="Enter City..."
 			/>
 			<Button
@@ -25,9 +26,9 @@ const Buttons = ({
 				variant="dark"
 				size="sm"
 				onClick={handleClick}
-				disabled={city?.length === 0 || status === 'submitting'}
+				disabled={city?.length === 0 || isLoading}
 			>
-				{checkWeather}
+				{isLoading ? "Loading..." : checkWeather}
 			</Button>
 			<Button
 				className="mt-2 ms-1"

@@ -21,6 +21,7 @@ const App = () => {
 	const [status, setStatus] = useState('typing');
 	const [error, setError] = useState(false);
 	const [displayTime, setDisplayTime] = useState(null);
+	const [isLoading, setIsLoading] = useState(false)
 
 	const { VITE_API_URL, VITE_API_KEY } = import.meta.env;
 
@@ -60,10 +61,18 @@ const App = () => {
 		setCity(e.target.value);
 	};
 
-	const handleClick = () => {
-		setWeather(weather);
+	const handleClick = async () => {
+		if (!city) return;
+
+		setIsLoading(true);
 		setStatus('submitting');
-		getWeather();
+
+		await new Promise((resolve) => setTimeout(resolve, 1500));
+
+		await getWeather();
+
+		setIsloading(false);
+		setStatus('typing');
 	};
 
 	const getWeatherIcon = () => {
@@ -98,6 +107,7 @@ const App = () => {
 										city={city}
 										status={status}
 										handleChange={handleChange}
+										isLoading={isLoading}
 										handleClick={handleClick}
 										checkWeather="Check Weather"
 										refreshText="Refresh"
@@ -118,6 +128,7 @@ const App = () => {
 									refreshText="Refresh"
 									heading="Weather-Beaten App"
 									checkWeather="Check Weather"
+								// loading="loaded"
 								/>
 							</Card.Body>
 							<Card.Body>
